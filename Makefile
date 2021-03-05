@@ -1,18 +1,20 @@
-CFLAGS = -g -Wall
-TEST_PATH = $(ROOT_PATH)tests/
+CFLAGS=-g -Wall
+TEST_PATH=$(ROOT_PATH)tests/
 
-CLIENT_FILES = client.c
-SERVER_FILES = server.s
+CORE_FILES=et_utils.c process.c
+CLIENT_FILES=client.c
+SERVER_FILES=server.c
+APPLICATION_FILES=easy_tcp.c $(CORE_FILES) $(SERVER_FILES) $(CLIENT_FILES)
 
-SERVER_FILES = 
-CLIENT_EXC_NAME = client
-SERVER_EXC_NAME = server
+CLIENT_EXC_NAME=client
+SERVER_EXC_NAME=server
+APPLICATION_EXC_NAME=easy-tcp
 
 build-client:
-	gcc $(CFLAGS) -o $(CLIENT_EXC_NAME) $(CLIENT_FILES)
+	gcc $(CFLAGS) -o $(CLIENT_EXC_NAME) $(CORE_FILES) $(CLIENT_FILES)
 
 build-server:
-	gcc $(CFLAGS) -o $(SERVER_EXC_NAME) $(SERVER_FILES)
+	gcc $(CFLAGS) -o $(SERVER_EXC_NAME) $(CORE_FILES) $(SERVER_FILES)
 
 run-client:
 	make build-client
@@ -21,3 +23,6 @@ run-client:
 run-server:
 	make build-server
 	./$(SERVER_EXC_NAME)
+
+build:
+	gcc $(CFLAGS) -o $(APPLICATION_EXC_NAME) $(APPLICATION_FILES) 

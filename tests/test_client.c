@@ -5,6 +5,5 @@
 
 int main()
 {
-    int client_success = client();
     return 0;
 }

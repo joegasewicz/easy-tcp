@@ -6,7 +6,7 @@
 #include <unistd.h>
 
 
-int client()
+int ET_client()
 {
     
     int sockfd = -1, remote_server_connect_success = -1;

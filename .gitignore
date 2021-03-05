@@ -35,7 +35,7 @@ test
 client
 server
 hello_world
-easy_web
+easy-tcp
 *.exe
 *.out
 *.app

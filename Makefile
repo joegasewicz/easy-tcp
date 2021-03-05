@@ -10,6 +10,10 @@ CLIENT_EXC_NAME=client
 SERVER_EXC_NAME=server
 APPLICATION_EXC_NAME=easy-tcp
 
+# test:
+# gcc -o test tests/check_server.c `pkg-config --cflags --libs check`
+#	./test
+
 build-client:
 	gcc $(CFLAGS) -o $(CLIENT_EXC_NAME) $(CORE_FILES) $(CLIENT_FILES)
 

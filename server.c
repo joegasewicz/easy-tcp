@@ -15,9 +15,6 @@
 #define ET_HANDLE_ERROR(msg, err_code) do { perror(msg); exit(err_code); } while (0);
 
 /**
- * test:
- *  gcc -o test tests/check_server.c `pkg-config --cflags --libs check`
- *	./test
  * 
  * 
  * */

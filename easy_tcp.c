@@ -28,10 +28,20 @@ int main(int argc, char *argv[])
     if(strcmp(argv[1], ET_ARG_SERVER) == 0)
     {
         int server_result = ET_server();
+        if(server_result < 0)
+        {
+            perror("Error");
+            exit(server_result);
+        }
     }
 
     if(strcmp(argv[1], ET_ARG_CLIENT) == 0) {
         int client_result = ET_client();
+        if(client_result < 0)
+        {
+            perror("Error");
+            exit(client_result);
+        }
     }
 
     return 0;

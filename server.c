@@ -21,7 +21,7 @@
  * 
  * 
  * */
-int ET_server()
+int ET_server(int port)
 {
 
     int sockfd = ET_SOCKET_FAILURE;
@@ -35,15 +35,14 @@ int ET_server()
     }
 
     server_addr.sin_family = AF_INET;
-    server_addr.sin_port = htons(ET_SOCKET_PORT);
+    server_addr.sin_port = htons(port);
     server_addr.sin_addr.s_addr = inet_addr("127.0.0.1");
 
     bind_rtn = bind(sockfd, (struct sockaddr *)&server_addr, sizeof(server_addr));
     if(bind_rtn < 0)
     {
-        printf("Closing socket...s\n");
         close(sockfd);
-        ET_HANDLE_ERROR("Failed to bind to server created socket", ET_BIND_FAILURE);
+        ET_HANDLE_ERROR("[EASY_TCP] Bind Error:", ET_BIND_FAILURE);
     }
 
     printf(
@@ -52,6 +51,8 @@ int ET_server()
         ntohs(server_addr.sin_port)
         );
     printf("Closing Socket...\n");
+
+
     close(sockfd);
 
     return 0;

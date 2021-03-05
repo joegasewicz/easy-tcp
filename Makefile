@@ -2,7 +2,7 @@ CFLAGS = -g -Wall
 TEST_PATH = $(ROOT_PATH)tests/
 
 CLIENT_FILES = client.c
-SERVER_FILES = server.c
+SERVER_FILES = server.s
 
 SERVER_FILES = 
 CLIENT_EXC_NAME = client

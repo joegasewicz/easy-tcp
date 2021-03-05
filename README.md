@@ -1,4 +1,6 @@
 # Easy TCP
+[![C/C++ CI](https://github.com/joegasewicz/easy-tcp/actions/workflows/c-cpp.yml/badge.svg)](https://github.com/joegasewicz/easy-tcp/actions/workflows/c-cpp.yml)
+
 TCP Client & Server
 
 

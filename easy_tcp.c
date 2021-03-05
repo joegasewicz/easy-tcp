@@ -1,17 +1,10 @@
 #include <stdio.h>
 #include <string.h>
+#include <stdlib.h>
 #include "et_utils.h"
 #include "process.h"
 #include "server.h"
 #include "client.h"
-
-#define ET_ARG_SERVER "-server"
-#define ET_ARG_CLIENT "-client"
-#define ET_OPTION_PORT "--port"
-#define ET_OPTION_URL "--url"
-#define ET_OPTION_METHOD "--method"
-#define ET_OPTION_HEADERS "--headers"
-#define ET_OPTION_BODY "--body"
 
 
 int main(int argc, char *argv[])

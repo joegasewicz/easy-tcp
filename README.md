@@ -22,7 +22,7 @@ make build
 easy-tcp -server --port 4040
 ```
 
-##### Start the Easy TCP client
+##### Create a request with the TCP client
 ```bash
 easy-tcp -client \
  --url http://localhost:4040/hello \

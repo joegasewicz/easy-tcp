@@ -17,5 +17,9 @@ easy-tcp -server --port 4040
 
 ##### Start the Easy TCP client
 ```bash
-easy-tcp -client -url http://localhost:4040/hello -method GET -headers { "Content-Type": "application/json" } -body {"message": "hello!"}
+easy-tcp -client \
+ -url http://localhost:4040/hello \
+ -method GET \
+ -headers { "Content-Type": "application/json" } \
+ -body {"message": "hello!"}
 ```

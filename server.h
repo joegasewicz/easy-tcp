@@ -1,2 +1,1 @@
-
-int server();
+int ET_server();

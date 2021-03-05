@@ -1,1 +1,1 @@
-int client();
+int ET_client();

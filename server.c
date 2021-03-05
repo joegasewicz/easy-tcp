@@ -8,11 +8,11 @@
 #include <arpa/inet.h>
 #include <unistd.h>
 
-#define EASY_SOCKET_FAILURE -1
-#define EASY_BIND_FAILURE -1
-#define EASY_SOCKET_PORT 7070
-#define EASY_EXIT_FAILURE -1
-#define EASY_HANDLE_ERROR(msg, err_code) do { perror(msg); exit(err_code); } while (0);
+#define ET_SOCKET_FAILURE -1
+#define ET_BIND_FAILURE -1
+#define ET_SOCKET_PORT 7070
+#define ET_EXIT_FAILURE -1
+#define ET_HANDLE_ERROR(msg, err_code) do { perror(msg); exit(err_code); } while (0);
 
 /**
  * test:
@@ -21,21 +21,21 @@
  * 
  * 
  * */
-int server()
+int ET_server()
 {
 
-    int sockfd = EASY_SOCKET_FAILURE;
-    int bind_rtn = EASY_BIND_FAILURE;
+    int sockfd = ET_SOCKET_FAILURE;
+    int bind_rtn = ET_BIND_FAILURE;
     struct sockaddr_in server_addr;
 
     sockfd = socket(AF_INET, SOCK_STREAM, 0);
     if(sockfd < 0)
     {
-        EASY_HANDLE_ERROR("Failed to create socket!", EASY_SOCKET_FAILURE);
+        ET_HANDLE_ERROR("Failed to create socket!", ET_SOCKET_FAILURE);
     }
 
     server_addr.sin_family = AF_INET;
-    server_addr.sin_port = htons(EASY_SOCKET_PORT);
+    server_addr.sin_port = htons(ET_SOCKET_PORT);
     server_addr.sin_addr.s_addr = inet_addr("127.0.0.1");
 
     bind_rtn = bind(sockfd, (struct sockaddr *)&server_addr, sizeof(server_addr));
@@ -43,7 +43,7 @@ int server()
     {
         printf("Closing socket...s\n");
         close(sockfd);
-        EASY_HANDLE_ERROR("Failed to bind to server created socket", EASY_BIND_FAILURE);
+        ET_HANDLE_ERROR("Failed to bind to server created socket", ET_BIND_FAILURE);
     }
 
     printf(

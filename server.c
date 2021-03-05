@@ -15,8 +15,7 @@
 #define ET_HANDLE_ERROR(msg, err_code) do { perror(msg); exit(err_code); } while (0);
 
 /**
- * 
- * 
+ * @param port
  * */
 int ET_server(int port)
 {   
@@ -24,8 +23,8 @@ int ET_server(int port)
     int sockfd = ET_SOCKET_FAILURE;
     int bind_rtn = ET_BIND_FAILURE;
     struct sockaddr_in server_addr, client_addr;
-    int client_sock_type_len;
-    char read_buffer[20];
+    int client_sock_type_len = -1;
+    char read_buffer[1000];
 
     sockfd = socket(AF_INET, SOCK_STREAM, 0);
     if(sockfd < 0)
@@ -72,19 +71,28 @@ int ET_server(int port)
         );
 
     read_return = read(client_session_fd, read_buffer, sizeof(read_buffer));
-    printf("SERVER:: Reading from client: %s\n", read_buffer);
+
+    printf("[EASY_TCP] SERVER:: Reading from client: \n%s\n", read_buffer);
     if(read_return < 0)
     {
         ET_HANDLE_ERROR("[EASY_TCP] Read Error:", read_return);
     } 
 
-    write_return = write(client_session_fd, read_buffer, strlen(read_buffer)+1);
-    if(read_return < 0)
+    char write_buffer[500] = 
+    "HTTP/1.1 200 OK\r\n"
+    "Server: Easy TCP v0.1\r\n"
+    "Content-Type: text/html\r\n"
+    "\r\n"
+    "<html><body><h1>Hello World!</h1></body></html>";
+
+    write_return = write(client_session_fd, write_buffer, strlen(write_buffer)+1);
+    if(write_return < 0)
     {
         ET_HANDLE_ERROR("[EASY_TCP] Write Error:", write_return);
     }
 
     close(sockfd);
+    printf("[EASY_TCP] Server shutdown successfully...\n");
 
     return 0;
 }

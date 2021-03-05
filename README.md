@@ -1,7 +1,11 @@
 # Easy TCP
 TCP Client & Server
 
+
+(Library still in dev, please call back soon)
+
 ### Quick Start
+
 
 ##### Install
 ```bash

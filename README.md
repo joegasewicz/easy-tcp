@@ -1,4 +1,5 @@
-# Easy TCP Client & Server For C
+# Easy TCP
+TCP Client & Server
 
 ### Quick Start
 

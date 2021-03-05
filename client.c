@@ -18,9 +18,6 @@ int ET_client()
         printf("Socket failed\n");
         return -1;
     }
-
-    printf("Socket creation Success\n");
-
     // Connect to Server on its address
     struct sockaddr_un remote_server;
     remote_server.sun_family = AF_UNIX;

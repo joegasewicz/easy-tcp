@@ -26,7 +26,7 @@ easy-tcp -server --port 4040
 ```bash
 easy-tcp -client \
  --url http://localhost:4040/hello \
- --method GET \
+ --method POST \
  --headers { "Content-Type": "application/json" } \
  --body {"message": "hello!"}
 ```

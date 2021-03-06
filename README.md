@@ -17,4 +17,4 @@ easy-tcp --port 7070 --app app.py
 ```
 
 ### Contributing
-Please see [Contributing](contributing.md)
+Please see [Contributing](CONTRIBUTING.md)

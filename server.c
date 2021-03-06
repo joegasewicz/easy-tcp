@@ -57,39 +57,45 @@ int ET_server(int port)
     }
 
     client_sock_type_len = sizeof(client_addr);
-    client_session_fd = accept(sockfd, (struct sockaddr *)&client_addr, &client_sock_type_len);
-    if(client_session_fd < 0)
-    {
-        close(sockfd);
-        ET_HANDLE_ERROR("[EASY_TCP] Accept Error:", listen_return);
-    }
 
-    printf(
-        "[EASY_TCP] Info: Client request accepted on %s:%hd\n",
-        inet_ntoa(client_addr.sin_addr),
-        ntohs(client_addr.sin_port)
-        );
+    while(1) {
+        // Accept new clients
+        client_session_fd = accept(sockfd, (struct sockaddr *)&client_addr, &client_sock_type_len);
+        if(client_session_fd < 0)
+        {
+            close(sockfd);
+            ET_HANDLE_ERROR("[EASY_TCP] Accept Error:", listen_return);
+        }
 
-    read_return = read(client_session_fd, read_buffer, sizeof(read_buffer));
+        printf(
+            "[EASY_TCP] Info: Client request accepted on %s:%hd\n",
+            inet_ntoa(client_addr.sin_addr),
+            ntohs(client_addr.sin_port)
+            );
 
-    printf("[EASY_TCP] SERVER:: Reading from client: \n%s\n", read_buffer);
-    if(read_return < 0)
-    {
-        ET_HANDLE_ERROR("[EASY_TCP] Read Error:", read_return);
-    } 
+        read_return = read(client_session_fd, read_buffer, sizeof(read_buffer));
 
-    char write_buffer[500] = 
-    "HTTP/1.1 200 OK\r\n"
-    "Server: Easy TCP v0.1\r\n"
-    "Content-Type: text/html\r\n"
-    "\r\n"
-    "<html><body><h1>Hello World!</h1></body></html>";
+        printf("[EASY_TCP] SERVER:: Reading from client: \n%s\n", read_buffer);
+        if(read_return < 0)
+        {
+            ET_HANDLE_ERROR("[EASY_TCP] Read Error:", read_return);
+        } 
 
-    write_return = write(client_session_fd, write_buffer, strlen(write_buffer)+1);
-    if(write_return < 0)
-    {
-        ET_HANDLE_ERROR("[EASY_TCP] Write Error:", write_return);
-    }
+        char write_buffer[500] = 
+        "HTTP/1.1 200 OK\r\n"
+        "Server: Easy TCP v0.1\r\n"
+        "Content-Type: text/html\r\n"
+        "\r\n"
+        "<html><body><h1>Hello World!</h1></body></html>";
+
+        write_return = write(client_session_fd, write_buffer, strlen(write_buffer)+1);
+        if(write_return < 0)
+        {
+            ET_HANDLE_ERROR("[EASY_TCP] Write Error:", write_return);
+        }
+        // Close client session
+        close(client_session_fd);
+    } // End while loop
 
     close(sockfd);
     printf("[EASY_TCP] Server shutdown successfully...\n");

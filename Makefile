@@ -18,4 +18,3 @@ test:
 
 run:
 	./$(APPLICATION_EXC_NAME)
-

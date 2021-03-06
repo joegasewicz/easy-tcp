@@ -15,3 +15,6 @@ Python WSGI Server written in C
 ```bash
 easy-tcp --port 7070 --app app.py
 ```
+
+### Contributing
+Please see [Contributing](contributing.md)

@@ -13,5 +13,5 @@ Python WSGI Server
 
 ##### Start Easy TCP Server
 ```bash
-easy-tcp --port 7070 --app app
+easy-tcp --port 7070 --app app.py
 ```

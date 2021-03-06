@@ -3,6 +3,11 @@
 # Easy TCP
 Python WSGI Server written in C
 
+### Compatibility
+* Linux
+* MacOS
+* Windows (Currently unsupported, see [issue #15](https://github.com/joegasewicz/easy-tcp/issues/15))
+
 ### Quick Start
 
 
@@ -17,4 +22,4 @@ easy-tcp --port 7070 --app app.py
 ```
 
 ### Contributing
-Please see [Contributing](contributing.md)
+Please see [Contributing](CONTRIBUTING.md)

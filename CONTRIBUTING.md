@@ -10,6 +10,7 @@ make build
 Install CMocka
 ```bash
 sudo apt-get install libcmocka-dev
+make test
 ```
 
 ### Adding new features

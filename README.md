@@ -3,6 +3,10 @@
 # Easy TCP
 Python WSGI Server written in C
 
+### Compatibility
+* Linux
+* MacOS
+
 ### Quick Start
 
 

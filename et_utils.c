@@ -14,9 +14,10 @@ int display_help()
     return 0;
 }
 
-Application *create_curr_app(char *app_name)
+Application *create_curr_app(char *host, short port)
 {
     Application *a = malloc(sizeof(Application));
-    strcat(a->name, app_name);
+    strcpy(a->host, host);
+    a->port = port;
     return a;
 }

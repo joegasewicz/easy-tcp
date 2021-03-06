@@ -23,7 +23,7 @@ int ET_server(int port)
     int sockfd = ET_SOCKET_FAILURE;
     int bind_rtn = ET_BIND_FAILURE;
     struct sockaddr_in server_addr, client_addr;
-    int client_sock_type_len = -1;
+    socklen_t client_sock_type_len = -1;
     char read_buffer[1000];
 
     sockfd = socket(AF_INET, SOCK_STREAM, 0);
@@ -57,7 +57,7 @@ int ET_server(int port)
     }
 
     client_sock_type_len = sizeof(client_addr);
-    client_session_fd = accept(sockfd, (struct sock_addr *)&client_addr, &client_sock_type_len);
+    client_session_fd = accept(sockfd, (struct sockaddr *)&client_addr, &client_sock_type_len);
     if(client_session_fd < 0)
     {
         close(sockfd);

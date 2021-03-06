@@ -1,1 +1,1 @@
-int ET_server();
+int ET_server(int port);

@@ -1,10 +1,7 @@
 # Easy TCP
 [![C/C++ CI](https://github.com/joegasewicz/easy-tcp/actions/workflows/c-cpp.yml/badge.svg)](https://github.com/joegasewicz/easy-tcp/actions/workflows/c-cpp.yml)
 
-TCP Client & Server
-
-
-(Library still in dev, please call back soon)
+TCP Server
 
 ### Quick Start
 
@@ -19,14 +16,5 @@ make build
 
 ##### Start Easy TCP Server
 ```bash
-easy-tcp -server --port 4040
-```
-
-##### Create a request with the TCP client
-```bash
-easy-tcp -client \
- --url http://localhost:4040/hello \
- --method POST \
- --headers { "Content-Type": "application/json" } \
- --body {"message": "hello!"}
+easy-tcp -server --port 4040 # TODO --port
 ```

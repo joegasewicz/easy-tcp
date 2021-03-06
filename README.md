@@ -6,7 +6,7 @@ Python WSGI Server written in C
 ### Compatibility
 * Linux
 * MacOS
-* Windows (Currently unsuported, see [issue #15](https://github.com/joegasewicz/easy-tcp/issues/15))
+* Windows (Currently unsupported, see [issue #15](https://github.com/joegasewicz/easy-tcp/issues/15))
 
 ### Quick Start
 

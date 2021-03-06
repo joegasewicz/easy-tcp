@@ -16,5 +16,5 @@ make build
 
 ##### Start Easy TCP Server
 ```bash
-easy-tcp --port 4040 # TODO --port
+easy-tcp --port 7070
 ```

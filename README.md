@@ -4,21 +4,18 @@
 Python WSGI Server written in C
 
 ### Compatibility
-* Linux
-* MacOS
-* Windows (Currently unsupported, see [issue #15](https://github.com/joegasewicz/easy-tcp/issues/15))
+Will run on UNIX like systems only
 
 ### Quick Start
 
-
 ##### Install
 ```bash
-
+    pip install east-tcp
 ```
 
 ##### Start Easy TCP Server
 ```bash
-easy-tcp --port 7070 --app app.py
+easy-tcp --port 7070 --max_processes 15 --app app.py --function start_app
 ```
 
 ### Contributing

@@ -111,7 +111,7 @@ int ET_server(int port)
             // Terminate child process
             _exit(0);
         } else if(pid < 0) {
-             close(sockfd); // Closing - TODO recoverary
+            close(sockfd); // Closing - TODO recoverary
             ET_HANDLE_ERROR("[EASY_TCP] Fork Error:", pid);
         }
         // Close client session

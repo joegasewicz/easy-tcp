@@ -1,1 +1,3 @@
-int ET_process();
+#include <sys/types.h>
+#include <sys/wait.h>
+

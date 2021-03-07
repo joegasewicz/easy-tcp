@@ -5,11 +5,3 @@
  *      - Client
  * */
 
-#include <sys/types.h>
-#include <unistd.h>
-
-
-int ET_process()
-{
-    return 0;
-}

@@ -7,6 +7,8 @@
 #include <netinet/ip.h>
 #include <arpa/inet.h>
 #include <unistd.h>
+#include <signal.h>
+#include "process.h"
 
 #define ET_SOCKET_FAILURE -1
 #define ET_BIND_FAILURE -1
@@ -59,6 +61,9 @@ int ET_server(int port)
 
     client_sock_type_len = sizeof(client_addr);
 
+    // Signalling
+    signal(SIGCHLD, signal_handler);
+
     while(1) {
         // Accept new clients
         client_session_fd = accept(sockfd, (struct sockaddr *)&client_addr, &client_sock_type_len);
@@ -108,7 +113,7 @@ int ET_server(int port)
             {
                 ET_HANDLE_ERROR("[EASY_TCP] Write Error:", write_return);
             }
-            // Terminate child process
+            // Terminate child process and handle SIGCHLD signal in handler (See process.c)
             _exit(0);
         } else if(pid < 0) {
             close(sockfd); // Closing - TODO recoverary

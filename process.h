@@ -1,3 +1,1 @@
-#include <sys/types.h>
-#include <sys/wait.h>
-
+void signal_handler(int signum);

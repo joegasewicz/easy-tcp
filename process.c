@@ -1,12 +1,14 @@
 /**
- * Process
- * 
- *  Processes are complemently decoupled - no interprocess communications are required. 
- * 
- *  This is currently implementing seperate PID's for the following:
+ * Process:
+ *  This is currently implementing separate PID's for the following:
  *      - Server
  *      - Client
  * */
+
+#include <sys/types.h>
+#include <unistd.h>
+
+
 int ET_process()
 {
     return 0;

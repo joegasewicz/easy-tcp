@@ -25,6 +25,7 @@ int ET_server(int port)
     struct sockaddr_in server_addr, client_addr;
     socklen_t client_sock_type_len = -1;
     char read_buffer[1000];
+    pid_t pid;
 
     sockfd = socket(AF_INET, SOCK_STREAM, 0);
     if(sockfd < 0)
@@ -73,25 +74,45 @@ int ET_server(int port)
             ntohs(client_addr.sin_port)
             );
 
-        read_return = read(client_session_fd, read_buffer, sizeof(read_buffer));
+        // Create child process for accepted client
+        pid = fork();
 
-        printf("[EASY_TCP] SERVER:: Reading from client: \n%s\n", read_buffer);
-        if(read_return < 0)
+        if(pid > 0)
         {
-            ET_HANDLE_ERROR("[EASY_TCP] Read Error:", read_return);
+            // Parent does not service clients
+            close(client_session_fd);
+            continue;
         } 
-
-        char write_buffer[500] = 
-        "HTTP/1.1 200 OK\r\n"
-        "Server: Easy TCP v0.1\r\n"
-        "Content-Type: text/html\r\n"
-        "\r\n"
-        "<html><body><h1>Hello World!</h1></body></html>";
-
-        write_return = write(client_session_fd, write_buffer, strlen(write_buffer)+1);
-        if(write_return < 0)
+        else if(pid == 0)
         {
-            ET_HANDLE_ERROR("[EASY_TCP] Write Error:", write_return);
+            // Listen is not required so close
+            close(sockfd);
+
+            read_return = read(client_session_fd, read_buffer, sizeof(read_buffer));
+
+            printf("[EASY_TCP] SERVER:: Reading from client: \n%s\n", read_buffer);
+            if(read_return < 0)
+            {
+                ET_HANDLE_ERROR("[EASY_TCP] Read Error:", read_return);
+            } 
+
+            char write_buffer[500] = 
+            "HTTP/1.1 200 OK\r\n"
+            "Server: Easy TCP v0.1\r\n"
+            "Content-Type: text/html\r\n"
+            "\r\n"
+            "<html><body><h1>Hello World!</h1></body></html>";
+
+            write_return = write(client_session_fd, write_buffer, strlen(write_buffer)+1);
+            if(write_return < 0)
+            {
+                ET_HANDLE_ERROR("[EASY_TCP] Write Error:", write_return);
+            }
+            // Terminate child process
+            _exit(0);
+        } else if(pid < 0) {
+             close(sockfd); // Closing - TODO recoverary
+            ET_HANDLE_ERROR("[EASY_TCP] Fork Error:", pid);
         }
         // Close client session
         close(client_session_fd);

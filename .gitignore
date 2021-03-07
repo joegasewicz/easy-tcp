@@ -36,6 +36,7 @@ client
 server
 hello_world
 easy-tcp
+test-easy-tcp
 *.exe
 *.out
 *.app

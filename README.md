@@ -10,7 +10,7 @@ Will run on UNIX like systems only
 
 ##### Install
 ```bash
-    pip install easy-tcp
+pip install easy-tcp
 ```
 
 ##### Start Easy TCP Server

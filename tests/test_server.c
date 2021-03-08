@@ -3,7 +3,7 @@
 // #include <sdtint.h>
 #include <setjmp.h>
 #include <cmocka.h>
-#include "../server.h"
+#include "../core/server.h"
 
 static void null_test_success(void **state);
 

@@ -4,7 +4,7 @@
 Python WSGI Server written in C
 
 ### Compatibility
-Will run on UNIX like systems only
+Run on UNIX like systems
 
 ### Quick Start
 

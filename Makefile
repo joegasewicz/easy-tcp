@@ -56,3 +56,10 @@ clean:
 ## -----------------------------------------------------------------
 python-run:
 	python3.9 easy_tcp.py
+
+python-build:
+	python3.9 setup.py sdist
+
+python-release:
+	make python-build
+	twine upload dist/* --verbose

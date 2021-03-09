@@ -3,14 +3,14 @@
 /* BEGIN: Cython Metadata
 {
     "distutils": {
-        "name": "server",
+        "name": "easy_tcp",
         "sources": [
             "cython_src/server.pyx",
             "process.c",
             "server.c"
         ]
     },
-    "module_name": "server"
+    "module_name": "easy_tcp"
 }
 END: Cython Metadata */
 
@@ -616,8 +616,8 @@ static CYTHON_INLINE float __PYX_NAN() {
   #endif
 #endif
 
-#define __PYX_HAVE__server
-#define __PYX_HAVE_API__server
+#define __PYX_HAVE__easy_tcp
+#define __PYX_HAVE_API__easy_tcp
 /* Early includes */
 #include "../process.h"
 #include "../server.h"
@@ -1029,29 +1029,31 @@ static int __Pyx_InitStrings(__Pyx_StringTabEntry *t);
 
 /* Module declarations from 'cserver' */
 
-/* Module declarations from 'server' */
-#define __Pyx_MODULE_NAME "server"
-extern int __pyx_module_is_main_server;
-int __pyx_module_is_main_server = 0;
+/* Module declarations from 'easy_tcp' */
+#define __Pyx_MODULE_NAME "easy_tcp"
+extern int __pyx_module_is_main_easy_tcp;
+int __pyx_module_is_main_easy_tcp = 0;
 
-/* Implementation of 'server' */
+/* Implementation of 'easy_tcp' */
 static const char __pyx_k_main[] = "__main__";
 static const char __pyx_k_name[] = "__name__";
 static const char __pyx_k_test[] = "__test__";
 static const char __pyx_k_server[] = "server";
+static const char __pyx_k_easy_tcp[] = "easy_tcp";
 static const char __pyx_k_cline_in_traceback[] = "cline_in_traceback";
 static const char __pyx_k_cython_src_server_pyx[] = "cython_src/server.pyx";
 static PyObject *__pyx_n_s_cline_in_traceback;
 static PyObject *__pyx_kp_s_cython_src_server_pyx;
+static PyObject *__pyx_n_s_easy_tcp;
 static PyObject *__pyx_n_s_main;
 static PyObject *__pyx_n_s_name;
 static PyObject *__pyx_n_s_server;
 static PyObject *__pyx_n_s_test;
-static PyObject *__pyx_pf_6server_server(CYTHON_UNUSED PyObject *__pyx_self); /* proto */
+static PyObject *__pyx_pf_8easy_tcp_server(CYTHON_UNUSED PyObject *__pyx_self); /* proto */
 static PyObject *__pyx_codeobj_;
 /* Late includes */
 
-/* "server.pyx":3
+/* "cython_src/server.pyx":3
  * cimport cserver
  * 
  * def server():             # <<<<<<<<<<<<<<
@@ -1059,32 +1061,32 @@ static PyObject *__pyx_codeobj_;
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_6server_1server(PyObject *__pyx_self, CYTHON_UNUSED PyObject *unused); /*proto*/
-static PyMethodDef __pyx_mdef_6server_1server = {"server", (PyCFunction)__pyx_pw_6server_1server, METH_NOARGS, 0};
-static PyObject *__pyx_pw_6server_1server(PyObject *__pyx_self, CYTHON_UNUSED PyObject *unused) {
+static PyObject *__pyx_pw_8easy_tcp_1server(PyObject *__pyx_self, CYTHON_UNUSED PyObject *unused); /*proto*/
+static PyMethodDef __pyx_mdef_8easy_tcp_1server = {"server", (PyCFunction)__pyx_pw_8easy_tcp_1server, METH_NOARGS, 0};
+static PyObject *__pyx_pw_8easy_tcp_1server(PyObject *__pyx_self, CYTHON_UNUSED PyObject *unused) {
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("server (wrapper)", 0);
-  __pyx_r = __pyx_pf_6server_server(__pyx_self);
+  __pyx_r = __pyx_pf_8easy_tcp_server(__pyx_self);
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_6server_server(CYTHON_UNUSED PyObject *__pyx_self) {
+static PyObject *__pyx_pf_8easy_tcp_server(CYTHON_UNUSED PyObject *__pyx_self) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("server", 0);
 
-  /* "server.pyx":4
+  /* "cython_src/server.pyx":4
  * 
  * def server():
  *     cserver.ET_server(7070)             # <<<<<<<<<<<<<<
  */
   (void)(ET_server(0x1B9E));
 
-  /* "server.pyx":3
+  /* "cython_src/server.pyx":3
  * cimport cserver
  * 
  * def server():             # <<<<<<<<<<<<<<
@@ -1105,17 +1107,17 @@ static PyMethodDef __pyx_methods[] = {
 #if PY_MAJOR_VERSION >= 3
 #if CYTHON_PEP489_MULTI_PHASE_INIT
 static PyObject* __pyx_pymod_create(PyObject *spec, PyModuleDef *def); /*proto*/
-static int __pyx_pymod_exec_server(PyObject* module); /*proto*/
+static int __pyx_pymod_exec_easy_tcp(PyObject* module); /*proto*/
 static PyModuleDef_Slot __pyx_moduledef_slots[] = {
   {Py_mod_create, (void*)__pyx_pymod_create},
-  {Py_mod_exec, (void*)__pyx_pymod_exec_server},
+  {Py_mod_exec, (void*)__pyx_pymod_exec_easy_tcp},
   {0, NULL}
 };
 #endif
 
 static struct PyModuleDef __pyx_moduledef = {
     PyModuleDef_HEAD_INIT,
-    "server",
+    "easy_tcp",
     0, /* m_doc */
   #if CYTHON_PEP489_MULTI_PHASE_INIT
     0, /* m_size */
@@ -1146,6 +1148,7 @@ static struct PyModuleDef __pyx_moduledef = {
 static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_n_s_cline_in_traceback, __pyx_k_cline_in_traceback, sizeof(__pyx_k_cline_in_traceback), 0, 0, 1, 1},
   {&__pyx_kp_s_cython_src_server_pyx, __pyx_k_cython_src_server_pyx, sizeof(__pyx_k_cython_src_server_pyx), 0, 0, 1, 0},
+  {&__pyx_n_s_easy_tcp, __pyx_k_easy_tcp, sizeof(__pyx_k_easy_tcp), 0, 0, 1, 1},
   {&__pyx_n_s_main, __pyx_k_main, sizeof(__pyx_k_main), 0, 0, 1, 1},
   {&__pyx_n_s_name, __pyx_k_name, sizeof(__pyx_k_name), 0, 0, 1, 1},
   {&__pyx_n_s_server, __pyx_k_server, sizeof(__pyx_k_server), 0, 0, 1, 1},
@@ -1160,7 +1163,7 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__Pyx_InitCachedConstants", 0);
 
-  /* "server.pyx":3
+  /* "cython_src/server.pyx":3
  * cimport cserver
  * 
  * def server():             # <<<<<<<<<<<<<<
@@ -1264,11 +1267,11 @@ static int __Pyx_modinit_function_import_code(void) {
 
 
 #if PY_MAJOR_VERSION < 3
-__Pyx_PyMODINIT_FUNC initserver(void) CYTHON_SMALL_CODE; /*proto*/
-__Pyx_PyMODINIT_FUNC initserver(void)
+__Pyx_PyMODINIT_FUNC initeasy_tcp(void) CYTHON_SMALL_CODE; /*proto*/
+__Pyx_PyMODINIT_FUNC initeasy_tcp(void)
 #else
-__Pyx_PyMODINIT_FUNC PyInit_server(void) CYTHON_SMALL_CODE; /*proto*/
-__Pyx_PyMODINIT_FUNC PyInit_server(void)
+__Pyx_PyMODINIT_FUNC PyInit_easy_tcp(void) CYTHON_SMALL_CODE; /*proto*/
+__Pyx_PyMODINIT_FUNC PyInit_easy_tcp(void)
 #if CYTHON_PEP489_MULTI_PHASE_INIT
 {
   return PyModuleDef_Init(&__pyx_moduledef);
@@ -1335,7 +1338,7 @@ bad:
 }
 
 
-static CYTHON_SMALL_CODE int __pyx_pymod_exec_server(PyObject *__pyx_pyinit_module)
+static CYTHON_SMALL_CODE int __pyx_pymod_exec_easy_tcp(PyObject *__pyx_pyinit_module)
 #endif
 #endif
 {
@@ -1347,7 +1350,7 @@ static CYTHON_SMALL_CODE int __pyx_pymod_exec_server(PyObject *__pyx_pyinit_modu
   #if CYTHON_PEP489_MULTI_PHASE_INIT
   if (__pyx_m) {
     if (__pyx_m == __pyx_pyinit_module) return 0;
-    PyErr_SetString(PyExc_RuntimeError, "Module 'server' has already been imported. Re-initialisation is not supported.");
+    PyErr_SetString(PyExc_RuntimeError, "Module 'easy_tcp' has already been imported. Re-initialisation is not supported.");
     return -1;
   }
   #elif PY_MAJOR_VERSION >= 3
@@ -1362,7 +1365,7 @@ if (!__Pyx_RefNanny) {
       Py_FatalError("failed to import 'refnanny' module");
 }
 #endif
-  __Pyx_RefNannySetupContext("__Pyx_PyMODINIT_FUNC PyInit_server(void)", 0);
+  __Pyx_RefNannySetupContext("__Pyx_PyMODINIT_FUNC PyInit_easy_tcp(void)", 0);
   if (__Pyx_check_binary_version() < 0) __PYX_ERR(0, 1, __pyx_L1_error)
   #ifdef __Pxy_PyFrame_Initialize_Offsets
   __Pxy_PyFrame_Initialize_Offsets();
@@ -1401,7 +1404,7 @@ if (!__Pyx_RefNanny) {
   Py_INCREF(__pyx_m);
   #else
   #if PY_MAJOR_VERSION < 3
-  __pyx_m = Py_InitModule4("server", __pyx_methods, 0, 0, PYTHON_API_VERSION); Py_XINCREF(__pyx_m);
+  __pyx_m = Py_InitModule4("easy_tcp", __pyx_methods, 0, 0, PYTHON_API_VERSION); Py_XINCREF(__pyx_m);
   #else
   __pyx_m = PyModule_Create(&__pyx_moduledef);
   #endif
@@ -1419,14 +1422,14 @@ if (!__Pyx_RefNanny) {
   #if PY_MAJOR_VERSION < 3 && (__PYX_DEFAULT_STRING_ENCODING_IS_ASCII || __PYX_DEFAULT_STRING_ENCODING_IS_DEFAULT)
   if (__Pyx_init_sys_getdefaultencoding_params() < 0) __PYX_ERR(0, 1, __pyx_L1_error)
   #endif
-  if (__pyx_module_is_main_server) {
+  if (__pyx_module_is_main_easy_tcp) {
     if (PyObject_SetAttr(__pyx_m, __pyx_n_s_name, __pyx_n_s_main) < 0) __PYX_ERR(0, 1, __pyx_L1_error)
   }
   #if PY_MAJOR_VERSION >= 3
   {
     PyObject *modules = PyImport_GetModuleDict(); if (unlikely(!modules)) __PYX_ERR(0, 1, __pyx_L1_error)
-    if (!PyDict_GetItemString(modules, "server")) {
-      if (unlikely(PyDict_SetItemString(modules, "server", __pyx_m) < 0)) __PYX_ERR(0, 1, __pyx_L1_error)
+    if (!PyDict_GetItemString(modules, "easy_tcp")) {
+      if (unlikely(PyDict_SetItemString(modules, "easy_tcp", __pyx_m) < 0)) __PYX_ERR(0, 1, __pyx_L1_error)
     }
   }
   #endif
@@ -1447,18 +1450,18 @@ if (!__Pyx_RefNanny) {
   if (__Pyx_patch_abc() < 0) __PYX_ERR(0, 1, __pyx_L1_error)
   #endif
 
-  /* "server.pyx":3
+  /* "cython_src/server.pyx":3
  * cimport cserver
  * 
  * def server():             # <<<<<<<<<<<<<<
  *     cserver.ET_server(7070)
  */
-  __pyx_t_1 = PyCFunction_NewEx(&__pyx_mdef_6server_1server, NULL, __pyx_n_s_server); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 3, __pyx_L1_error)
+  __pyx_t_1 = PyCFunction_NewEx(&__pyx_mdef_8easy_tcp_1server, NULL, __pyx_n_s_easy_tcp); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 3, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   if (PyDict_SetItem(__pyx_d, __pyx_n_s_server, __pyx_t_1) < 0) __PYX_ERR(0, 3, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "server.pyx":1
+  /* "cython_src/server.pyx":1
  * cimport cserver             # <<<<<<<<<<<<<<
  * 
  * def server():
@@ -1475,11 +1478,11 @@ if (!__Pyx_RefNanny) {
   __Pyx_XDECREF(__pyx_t_1);
   if (__pyx_m) {
     if (__pyx_d) {
-      __Pyx_AddTraceback("init server", __pyx_clineno, __pyx_lineno, __pyx_filename);
+      __Pyx_AddTraceback("init easy_tcp", __pyx_clineno, __pyx_lineno, __pyx_filename);
     }
     Py_CLEAR(__pyx_m);
   } else if (!PyErr_Occurred()) {
-    PyErr_SetString(PyExc_ImportError, "init server");
+    PyErr_SetString(PyExc_ImportError, "init easy_tcp");
   }
   __pyx_L0:;
   __Pyx_RefNannyFinishContext();

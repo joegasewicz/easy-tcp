@@ -2,31 +2,29 @@ from setuptools import setup, Extension
 
 ext_modules = []
 
-
-
-# from Cython.Build import cythonize
-# ext_modules = cythonize(
-#     Extension("easy_tcp",
-#               sources=[
-#                   "process.c",
-#                   "server.c",
-#                   "cython_src/server.pyx"
-#               ],
-#               )
-# )
-
-
-ext_modules = [Extension(
-    "easy_tcp",
-    ["cython_src/process.c", "cython_src/server.c", ]
-)]
+try:
+    from Cython.Build import cythonize
+    ext_modules = cythonize(
+        Extension("easy_tcp",
+                  sources=[
+                      "process.c",
+                      "server.c",
+                      "cython_src/server.pyx"
+                  ],
+                  )
+    )
+except ImportError:
+    ext_modules = [Extension(
+        "easy_tcp",
+        ["cython_src/process.c", "cython_src/server.c", ]
+    )]
 
 with open("README.md", "r") as fh:
     long_description = fh.read()
 
 setup(
     name="easy-tcp",
-    version="0.0.4rc5",
+    version="0.0.4rc4",
     description="Python TCP WSGI Server",
     packages=["easy_tcp", "cython_src"],
     install_requires=[

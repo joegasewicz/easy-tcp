@@ -12,21 +12,24 @@ if "--et_comp" in sys.argv:
             "easy_tcp.core.cython_server",
             [
                 "easy_tcp/core/cython_server.pyx",
-                "easy_tcp/core/server.c",
                 "easy_tcp/core/process.c",
+                "easy_tcp/core/server.c",
             ],
-            install_dir=["easy_tcp/core"]
+            include_dirs=['easy_tcp/core'],
+            depends=["easy_tcp/core/process.h"]
         ),
         compiler_directives=compiler_directives,
     )
 else:
+    print("Packaging...")
     ext_modules = [
         Extension(
-            "cython_server",
+            "easy_tcp.core.cython_server",
             [
-                "easy_tcp/core/server.c",
-                "easy_tcp/core/process.c",
+                "easy_tcp/core/cython_server.c",
             ],
+            include_dirs=["easy_tcp", 'easy_tcp/core'],
+            depends=["easy_tcp/core/process.h"],
         )
     ]
 
@@ -36,11 +39,11 @@ with open("README.md", "r") as fh:
 setup(
     name="easy-tcp",
     version="0.0.5",
-    description="Python TCP WSGI Server",
-    # packages=find_packages(where="easy_tcp"),
     install_requires=[
-        "cython"
-    ],
+        "Cython==0.29.22"
+        ],
+    description="Python TCP WSGI Server",
+    packages=["easy_tcp", "easy_tcp.core"],
     zip_safe=False,
     ext_modules=ext_modules,
     classifiers=[
@@ -52,7 +55,5 @@ setup(
     url="https://github.com/joegasewicz/easy-tcp",
     author="Joe Gasewicz",
     author_email="joegasewicz@gmail.com",
-
-    # package_dir={"": ""},
-    # package_data={'*': ['*.pxd', '*.h']},
+    package_data={'*': ['*.pxd', '*.h']},
 )

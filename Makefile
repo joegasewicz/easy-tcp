@@ -40,13 +40,14 @@ cython:
 	make cython-build
 	ar -rc $(CORE_PATH)libprocess.a $(CORE_PATH)process.o
 	ar -rc $(CORE_PATH)libserver.a $(CORE_PATH)server.o
+	
 	python3 setup.py build_ext --inplace --et_comp
 
 install:
-	pip install $(DIST_DIR)/easy-tcp-0.0.5.tar.gz
+	python3 setup.py install
 
 clean:
-	$(RM) -r $(CORE_PATH)*.o $(CORE_PATH)*.a $(CORE_PATH)*.so
+	$(RM) -r $(CORE_PATH)*.o $(CORE_PATH)*.a $(CORE_PATH)*.so $(CORE_PATH)lib*.a
 	$(RM) -r easy_tcp/*.so 
 	$(RM) -r $(CORE_PATH)__pycache__
 	$(RM) -r $(CORE_PATH)__init__.py
@@ -62,7 +63,7 @@ easy:
 	python3.9 easy_tcp/__init__.py
 
 pkg:
-	python3.9 setup.py sdist bdist_wheel
+	python3.9 setup.py sdist
 
 python-release:
 	make pkg

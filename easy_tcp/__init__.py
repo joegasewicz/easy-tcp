@@ -1,7 +1,9 @@
 import pyximport
 pyximport.install()
 
-import core.cython_server
+from core import cython_server
+
+server = cython_server
 
 if __name__ == "__main__":
-    cython_server.server()
+    server.server()

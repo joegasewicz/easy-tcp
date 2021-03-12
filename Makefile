@@ -40,7 +40,7 @@ cython:
 	make cython-build
 	ar -rc $(CORE_PATH)libprocess.a $(CORE_PATH)process.o
 	ar -rc $(CORE_PATH)libserver.a $(CORE_PATH)server.o
-	python3.9 setup.py build_ext --et_comp
+	python3 setup.py build_ext --inplace --et_comp
 
 install:
 	pip install $(DIST_DIR)/easy-tcp-0.0.5.tar.gz

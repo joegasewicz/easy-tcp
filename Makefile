@@ -4,7 +4,8 @@
 
 CFLAGS=-g -Wall
 TEST_PATH=$(ROOT_PATH)tests/
-CORE_PATH=$(ROOT_PATH)core/
+CORE_PATH=$(ROOT_PATH)easy_tcp/core/
+DIST_DIR=dist
 
 CORE_FILES=$(CORE_PATH)et_utils.c $(CORE_PATH)process.c
 SERVER_FILES=$(CORE_PATH)server.c
@@ -32,34 +33,49 @@ req:
 	sudo apt-get install python-dev
 
 cython-build:
-	gcc -Wall -g -c process.c -o cython_src/process.o
-	gcc -Wall -g -c server.c -o cython_src/server.o
+	gcc -Wall -g -c $(CORE_PATH)process.c -o $(CORE_PATH)process.o
+	gcc -Wall -g -c $(CORE_PATH)server.c -o $(CORE_PATH)server.o
 
-
-
-cython-compile:
+cython:
 	make cython-build
-	ar -rc cython_src/libprocess.a cython_src/process.o
-	ar -rc cython_src/libserver.a cython_src/server.o
-	python3.9 setup.py build_ext --build-lib cython_src
+	ar -rc $(CORE_PATH)libprocess.a $(CORE_PATH)process.o
+	ar -rc $(CORE_PATH)libserver.a $(CORE_PATH)server.o
+	python3.9 setup.py build_ext --et_comp
+
+install:
+	pip install $(DIST_DIR)/easy-tcp-0.0.5.tar.gz
 
 clean:
-	rm -rf cython_src/server.o\
- 		   cython_src/libserver.a\
- 		   cython_src/process.o\
- 		   cython_src/libprocess.a\
- 		   cython_src/server.c\
- 		   cython_src/server.cpython-39-x86_64-linux-gnu.so\
- 		   build
+	$(RM) -r $(CORE_PATH)*.o $(CORE_PATH)*.a $(CORE_PATH)*.so
+	$(RM) -r easy_tcp/*.so 
+	$(RM) -r $(CORE_PATH)__pycache__
+	$(RM) -r $(CORE_PATH)__init__.py
+	$(RM) -r $(CORE_PATH)cython_server.c
+	$(RM) -r build
+	$(RM) -r $(DIST_DIR)
+	$(RM) -r venv/lib/python3.9/site-packages/easy_tcp*.* venv/lib/python3.9/site-packages/easy_tcp*
+
 ## -----------------------------------------------------------------
 ## Python Tasks
 ## -----------------------------------------------------------------
-python-run:
-	python3.9 easy_tcp.py
+easy:
+	python3.9 easy_tcp/__init__.py
 
-python-build:
-	python3.9 setup.py sdist
+pkg:
+	python3.9 setup.py sdist bdist_wheel
 
 python-release:
-	make python-build
-	twine upload dist/* --verbose
+	make pkg
+	twine upload $(DIST_DIR)/* --verbose
+	$(RM) easy_tcp/core/__init__.py
+
+## -----------------------------------------------------------------
+## Local testing
+## -----------------------------------------------------------------
+local:
+	make clean
+	make cython
+	touch $(CORE_PATH)__init__.py
+	make pkg
+	pip uninstall easy-tcp
+	make install

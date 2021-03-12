@@ -1,32 +1,42 @@
-from setuptools import setup, Extension
+from setuptools import setup, Extension, find_packages
+import sys
 
-ext_modules = []
+compiler_directives = {"language_level": 3, "embedsignature": True}
 
-try:
+if "--et_comp" in sys.argv:
+    print("Compiling...")
     from Cython.Build import cythonize
+    sys.argv.remove("--et_comp")
     ext_modules = cythonize(
-        Extension("easy_tcp",
-                  sources=[
-                      "process.c",
-                      "server.c",
-                      "cython_src/server.pyx"
-                  ],
-                  )
+        Extension(
+            "easy_tcp.core",
+            sources=[
+                "easy_tcp/core/cython_server.pyx",
+                "easy_tcp/core/server.c",
+                "easy_tcp/core/process.c",
+            ],
+            # install_dir=["easy_tcp/core"]
+        ),
+        compiler_directives=compiler_directives,
     )
-except ImportError:
-    ext_modules = [Extension(
-        "easy_tcp",
-        ["cython_src/process.c", "cython_src/server.c", ]
-    )]
+else:
+    ext_modules = [
+        Extension(
+            "easy_tcp.core.cython_server",
+            [
+                "easy_tcp/core/server.c",
+            ],
+        )
+    ]
 
 with open("README.md", "r") as fh:
     long_description = fh.read()
 
 setup(
     name="easy-tcp",
-    version="0.0.4rc4",
+    version="0.0.5",
     description="Python TCP WSGI Server",
-    packages=["easy_tcp", "cython_src"],
+    # packages=find_packages(where="easy_tcp"),
     install_requires=[
         "cython"
     ],
@@ -41,4 +51,7 @@ setup(
     url="https://github.com/joegasewicz/easy-tcp",
     author="Joe Gasewicz",
     author_email="joegasewicz@gmail.com",
+
+    # package_dir={"": "easy_tcp"},
+    # package_data={'*': ['*.pxd', '*.h']},
 )

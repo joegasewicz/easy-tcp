@@ -33,18 +33,20 @@ req:
 	sudo apt-get install python-dev
 
 cython-build:
-	gcc -Wall -g -c $(CORE_PATH)process.c -o $(CORE_PATH)process.o
-	gcc -Wall -g -c $(CORE_PATH)server.c -o $(CORE_PATH)server.o
+	gcc $(CFLAGS) -c $(CORE_PATH)process.c -o $(CORE_PATH)process.o
+	gcc $(CFLAGS) -c $(CORE_PATH)server.c -o $(CORE_PATH)server.o
+	gcc $(CORE_PATH)server.o -shared -o $(CORE_PATH)libserver.so
+	gcc $(CORE_PATH)process.o -shared -o $(CORE_PATH)libprocess.so
+	ar -rc $(CORE_PATH)libprocess.a $(CORE_PATH)process.o
+	ar -rc $(CORE_PATH)libserver.a $(CORE_PATH)server.o
 
 cython:
 	make cython-build
-	ar -rc $(CORE_PATH)libprocess.a $(CORE_PATH)process.o
-	ar -rc $(CORE_PATH)libserver.a $(CORE_PATH)server.o
-	
 	python3 setup.py build_ext --inplace --et_comp
 
 install:
-	python3 setup.py install
+	#python3 setup.py install
+	pip install $(DIST_DIR)/easy-tcp-0.0.8rc4.tar.gz
 
 clean:
 	$(RM) -r $(CORE_PATH)*.o $(CORE_PATH)*.a $(CORE_PATH)*.so $(CORE_PATH)lib*.a
@@ -65,10 +67,10 @@ easy:
 pkg:
 	python3.9 setup.py sdist
 
-python-release:
+release:
 	make pkg
 	twine upload $(DIST_DIR)/* --verbose
-	$(RM) easy_tcp/core/__init__.py
+	$(RM) $(CORE_PATH)__init__.py
 
 ## -----------------------------------------------------------------
 ## Local testing
@@ -80,3 +82,5 @@ local:
 	make pkg
 	pip uninstall easy-tcp
 	make install
+	mv easy_tcp _easy_tcp
+	python test.py

@@ -15,7 +15,7 @@ jobs:
     - uses: actions/checkout@v2
     - name: Install CMocka
       run: sudo apt-get install libcmocka-dev
-    - name: make build
-      run: make build
+    # - name: make build
+    #   run: make build
     - name: make test
       run: make test

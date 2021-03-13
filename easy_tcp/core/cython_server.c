@@ -626,8 +626,8 @@ static CYTHON_INLINE float __PYX_NAN() {
 #define __PYX_HAVE__easy_tcp__core__cython_server
 #define __PYX_HAVE_API__easy_tcp__core__cython_server
 /* Early includes */
-#include "process.h"
-#include "server.h"
+#include "./process.h"
+#include "./server.h"
 #ifdef _OPENMP
 #include <omp.h>
 #endif /* _OPENMP */

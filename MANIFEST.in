@@ -1,0 +1,1 @@
+include easy_tcp/core/process.h easy_tcp/core/server.h easy_tcp/core/cython_server.pxd

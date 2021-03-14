@@ -7,7 +7,7 @@ TEST_PATH=$(ROOT_PATH)tests/
 CORE_PATH=$(ROOT_PATH)easy_tcp/core/
 CYTHON_PATH=$(ROOT_PATH)easy_tcp/
 DIST_DIR=dist
-VERSION=0.0.8rc11
+VERSION=0.0.8
 
 CORE_FILES=$(CORE_PATH)et_utils.c $(CORE_PATH)process.c
 SERVER_FILES=$(CORE_PATH)server.c

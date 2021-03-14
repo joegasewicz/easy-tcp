@@ -1,4 +1,5 @@
 [![C/C++ CI](https://github.com/joegasewicz/easy-tcp/actions/workflows/c-cpp.yml/badge.svg)](https://github.com/joegasewicz/easy-tcp/actions/workflows/c-cpp.yml)
+![PyPI](https://img.shields.io/pypi/v/easy-tcp)
 
 # Easy TCP
 Python WSGI Server written in C

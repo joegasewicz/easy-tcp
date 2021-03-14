@@ -46,7 +46,7 @@ with open("README.md", "r") as fh:
 
 setup(
     name="easy-tcp",
-    version="0.0.8rc11",
+    version="0.0.8",
     install_requires=[],
     include_package_data=True,
     description="Python TCP WSGI Server",
@@ -65,4 +65,5 @@ setup(
     author_email="joegasewicz@gmail.com",
     package_data={'*': ['*.pxd', '*.h']},
     cmdclass=cmd,
+    license=""
 )

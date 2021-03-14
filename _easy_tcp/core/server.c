@@ -19,7 +19,7 @@
 /**
  * @param port
  * */
-int ET_server(int port)
+int easy_tcp_server(int port)
 {   
     int listen_return = -1, client_session_fd = -1, read_return = -1, write_return = -1;
     int sockfd = ET_SOCKET_FAILURE;

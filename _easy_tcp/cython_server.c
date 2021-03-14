@@ -4,20 +4,21 @@
 {
     "distutils": {
         "depends": [
-            "easy_tcp/core/process.h",
             "easy_tcp/core/server.h"
         ],
         "include_dirs": [
-            "easy_tcp/core"
+            "easy_tcp",
+            "easy_tcp/core/"
         ],
-        "name": "easy_tcp.core.cython_server",
+        "language": "c",
+        "name": "easy_tcp.cython_server",
         "sources": [
-            "easy_tcp/core/cython_server.pyx",
+            "easy_tcp/cython_server.pyx",
             "easy_tcp/core/process.c",
             "easy_tcp/core/server.c"
         ]
     },
-    "module_name": "easy_tcp.core.cython_server"
+    "module_name": "easy_tcp.cython_server"
 }
 END: Cython Metadata */
 
@@ -623,11 +624,10 @@ static CYTHON_INLINE float __PYX_NAN() {
   #endif
 #endif
 
-#define __PYX_HAVE__easy_tcp__core__cython_server
-#define __PYX_HAVE_API__easy_tcp__core__cython_server
+#define __PYX_HAVE__easy_tcp__cython_server
+#define __PYX_HAVE_API__easy_tcp__cython_server
 /* Early includes */
-#include "./process.h"
-#include "./server.h"
+#include "core/server.h"
 #ifdef _OPENMP
 #include <omp.h>
 #endif /* _OPENMP */
@@ -836,7 +836,7 @@ static const char *__pyx_filename;
 
 
 static const char *__pyx_f[] = {
-  "easy_tcp/core/cython_server.pyx",
+  "easy_tcp/cython_server.pyx",
 };
 
 /*--- Type declarations ---*/
@@ -1034,70 +1034,68 @@ static int __Pyx_check_binary_version(void);
 static int __Pyx_InitStrings(__Pyx_StringTabEntry *t);
 
 
-/* Module declarations from 'cython_server' */
+/* Module declarations from 'easy_tcp.cython_server' */
+#define __Pyx_MODULE_NAME "easy_tcp.cython_server"
+extern int __pyx_module_is_main_easy_tcp__cython_server;
+int __pyx_module_is_main_easy_tcp__cython_server = 0;
 
-/* Module declarations from 'easy_tcp.core.cython_server' */
-#define __Pyx_MODULE_NAME "easy_tcp.core.cython_server"
-extern int __pyx_module_is_main_easy_tcp__core__cython_server;
-int __pyx_module_is_main_easy_tcp__core__cython_server = 0;
-
-/* Implementation of 'easy_tcp.core.cython_server' */
+/* Implementation of 'easy_tcp.cython_server' */
 static const char __pyx_k_main[] = "__main__";
 static const char __pyx_k_name[] = "__name__";
 static const char __pyx_k_test[] = "__test__";
 static const char __pyx_k_server[] = "server";
 static const char __pyx_k_cline_in_traceback[] = "cline_in_traceback";
-static const char __pyx_k_easy_tcp_core_cython_server[] = "easy_tcp.core.cython_server";
-static const char __pyx_k_easy_tcp_core_cython_server_pyx[] = "easy_tcp/core/cython_server.pyx";
+static const char __pyx_k_easy_tcp_cython_server[] = "easy_tcp.cython_server";
+static const char __pyx_k_easy_tcp_cython_server_pyx[] = "easy_tcp/cython_server.pyx";
 static PyObject *__pyx_n_s_cline_in_traceback;
-static PyObject *__pyx_n_s_easy_tcp_core_cython_server;
-static PyObject *__pyx_kp_s_easy_tcp_core_cython_server_pyx;
+static PyObject *__pyx_n_s_easy_tcp_cython_server;
+static PyObject *__pyx_kp_s_easy_tcp_cython_server_pyx;
 static PyObject *__pyx_n_s_main;
 static PyObject *__pyx_n_s_name;
 static PyObject *__pyx_n_s_server;
 static PyObject *__pyx_n_s_test;
-static PyObject *__pyx_pf_8easy_tcp_4core_13cython_server_server(CYTHON_UNUSED PyObject *__pyx_self); /* proto */
+static PyObject *__pyx_pf_8easy_tcp_13cython_server_server(CYTHON_UNUSED PyObject *__pyx_self); /* proto */
 static PyObject *__pyx_codeobj_;
 /* Late includes */
 
-/* "easy_tcp/core/cython_server.pyx":3
- * cimport cython_server
+/* "easy_tcp/cython_server.pyx":4
+ *     int easy_tcp_server(int port)
  * 
  * def server():             # <<<<<<<<<<<<<<
- *     cython_server.ET_server(7070)
+ *     easy_tcp_server(7070)
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_8easy_tcp_4core_13cython_server_1server(PyObject *__pyx_self, CYTHON_UNUSED PyObject *unused); /*proto*/
-static PyMethodDef __pyx_mdef_8easy_tcp_4core_13cython_server_1server = {"server", (PyCFunction)__pyx_pw_8easy_tcp_4core_13cython_server_1server, METH_NOARGS, 0};
-static PyObject *__pyx_pw_8easy_tcp_4core_13cython_server_1server(PyObject *__pyx_self, CYTHON_UNUSED PyObject *unused) {
+static PyObject *__pyx_pw_8easy_tcp_13cython_server_1server(PyObject *__pyx_self, CYTHON_UNUSED PyObject *unused); /*proto*/
+static PyMethodDef __pyx_mdef_8easy_tcp_13cython_server_1server = {"server", (PyCFunction)__pyx_pw_8easy_tcp_13cython_server_1server, METH_NOARGS, 0};
+static PyObject *__pyx_pw_8easy_tcp_13cython_server_1server(PyObject *__pyx_self, CYTHON_UNUSED PyObject *unused) {
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("server (wrapper)", 0);
-  __pyx_r = __pyx_pf_8easy_tcp_4core_13cython_server_server(__pyx_self);
+  __pyx_r = __pyx_pf_8easy_tcp_13cython_server_server(__pyx_self);
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_8easy_tcp_4core_13cython_server_server(CYTHON_UNUSED PyObject *__pyx_self) {
+static PyObject *__pyx_pf_8easy_tcp_13cython_server_server(CYTHON_UNUSED PyObject *__pyx_self) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("server", 0);
 
-  /* "easy_tcp/core/cython_server.pyx":4
+  /* "easy_tcp/cython_server.pyx":5
  * 
  * def server():
- *     cython_server.ET_server(7070)             # <<<<<<<<<<<<<<
+ *     easy_tcp_server(7070)             # <<<<<<<<<<<<<<
  */
-  (void)(ET_server(0x1B9E));
+  (void)(easy_tcp_server(0x1B9E));
 
-  /* "easy_tcp/core/cython_server.pyx":3
- * cimport cython_server
+  /* "easy_tcp/cython_server.pyx":4
+ *     int easy_tcp_server(int port)
  * 
  * def server():             # <<<<<<<<<<<<<<
- *     cython_server.ET_server(7070)
+ *     easy_tcp_server(7070)
  */
 
   /* function exit code */
@@ -1154,8 +1152,8 @@ static struct PyModuleDef __pyx_moduledef = {
 
 static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_n_s_cline_in_traceback, __pyx_k_cline_in_traceback, sizeof(__pyx_k_cline_in_traceback), 0, 0, 1, 1},
-  {&__pyx_n_s_easy_tcp_core_cython_server, __pyx_k_easy_tcp_core_cython_server, sizeof(__pyx_k_easy_tcp_core_cython_server), 0, 0, 1, 1},
-  {&__pyx_kp_s_easy_tcp_core_cython_server_pyx, __pyx_k_easy_tcp_core_cython_server_pyx, sizeof(__pyx_k_easy_tcp_core_cython_server_pyx), 0, 0, 1, 0},
+  {&__pyx_n_s_easy_tcp_cython_server, __pyx_k_easy_tcp_cython_server, sizeof(__pyx_k_easy_tcp_cython_server), 0, 0, 1, 1},
+  {&__pyx_kp_s_easy_tcp_cython_server_pyx, __pyx_k_easy_tcp_cython_server_pyx, sizeof(__pyx_k_easy_tcp_cython_server_pyx), 0, 0, 1, 0},
   {&__pyx_n_s_main, __pyx_k_main, sizeof(__pyx_k_main), 0, 0, 1, 1},
   {&__pyx_n_s_name, __pyx_k_name, sizeof(__pyx_k_name), 0, 0, 1, 1},
   {&__pyx_n_s_server, __pyx_k_server, sizeof(__pyx_k_server), 0, 0, 1, 1},
@@ -1170,13 +1168,13 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__Pyx_InitCachedConstants", 0);
 
-  /* "easy_tcp/core/cython_server.pyx":3
- * cimport cython_server
+  /* "easy_tcp/cython_server.pyx":4
+ *     int easy_tcp_server(int port)
  * 
  * def server():             # <<<<<<<<<<<<<<
- *     cython_server.ET_server(7070)
+ *     easy_tcp_server(7070)
  */
-  __pyx_codeobj_ = (PyObject*)__Pyx_PyCode_New(0, 0, 0, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_easy_tcp_core_cython_server_pyx, __pyx_n_s_server, 3, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj_)) __PYX_ERR(0, 3, __pyx_L1_error)
+  __pyx_codeobj_ = (PyObject*)__Pyx_PyCode_New(0, 0, 0, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_easy_tcp_cython_server_pyx, __pyx_n_s_server, 4, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj_)) __PYX_ERR(0, 4, __pyx_L1_error)
   __Pyx_RefNannyFinishContext();
   return 0;
   __pyx_L1_error:;
@@ -1429,14 +1427,14 @@ if (!__Pyx_RefNanny) {
   #if PY_MAJOR_VERSION < 3 && (__PYX_DEFAULT_STRING_ENCODING_IS_ASCII || __PYX_DEFAULT_STRING_ENCODING_IS_DEFAULT)
   if (__Pyx_init_sys_getdefaultencoding_params() < 0) __PYX_ERR(0, 1, __pyx_L1_error)
   #endif
-  if (__pyx_module_is_main_easy_tcp__core__cython_server) {
+  if (__pyx_module_is_main_easy_tcp__cython_server) {
     if (PyObject_SetAttr(__pyx_m, __pyx_n_s_name, __pyx_n_s_main) < 0) __PYX_ERR(0, 1, __pyx_L1_error)
   }
   #if PY_MAJOR_VERSION >= 3
   {
     PyObject *modules = PyImport_GetModuleDict(); if (unlikely(!modules)) __PYX_ERR(0, 1, __pyx_L1_error)
-    if (!PyDict_GetItemString(modules, "easy_tcp.core.cython_server")) {
-      if (unlikely(PyDict_SetItemString(modules, "easy_tcp.core.cython_server", __pyx_m) < 0)) __PYX_ERR(0, 1, __pyx_L1_error)
+    if (!PyDict_GetItemString(modules, "easy_tcp.cython_server")) {
+      if (unlikely(PyDict_SetItemString(modules, "easy_tcp.cython_server", __pyx_m) < 0)) __PYX_ERR(0, 1, __pyx_L1_error)
     }
   }
   #endif
@@ -1457,21 +1455,21 @@ if (!__Pyx_RefNanny) {
   if (__Pyx_patch_abc() < 0) __PYX_ERR(0, 1, __pyx_L1_error)
   #endif
 
-  /* "easy_tcp/core/cython_server.pyx":3
- * cimport cython_server
+  /* "easy_tcp/cython_server.pyx":4
+ *     int easy_tcp_server(int port)
  * 
  * def server():             # <<<<<<<<<<<<<<
- *     cython_server.ET_server(7070)
+ *     easy_tcp_server(7070)
  */
-  __pyx_t_1 = PyCFunction_NewEx(&__pyx_mdef_8easy_tcp_4core_13cython_server_1server, NULL, __pyx_n_s_easy_tcp_core_cython_server); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 3, __pyx_L1_error)
+  __pyx_t_1 = PyCFunction_NewEx(&__pyx_mdef_8easy_tcp_13cython_server_1server, NULL, __pyx_n_s_easy_tcp_cython_server); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 4, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_server, __pyx_t_1) < 0) __PYX_ERR(0, 3, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_server, __pyx_t_1) < 0) __PYX_ERR(0, 4, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "easy_tcp/core/cython_server.pyx":1
- * cimport cython_server             # <<<<<<<<<<<<<<
+  /* "easy_tcp/cython_server.pyx":1
+ * cdef extern from "core/server.h":             # <<<<<<<<<<<<<<
+ *     int easy_tcp_server(int port)
  * 
- * def server():
  */
   __pyx_t_1 = __Pyx_PyDict_NewPresized(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
@@ -1485,11 +1483,11 @@ if (!__Pyx_RefNanny) {
   __Pyx_XDECREF(__pyx_t_1);
   if (__pyx_m) {
     if (__pyx_d) {
-      __Pyx_AddTraceback("init easy_tcp.core.cython_server", __pyx_clineno, __pyx_lineno, __pyx_filename);
+      __Pyx_AddTraceback("init easy_tcp.cython_server", __pyx_clineno, __pyx_lineno, __pyx_filename);
     }
     Py_CLEAR(__pyx_m);
   } else if (!PyErr_Occurred()) {
-    PyErr_SetString(PyExc_ImportError, "init easy_tcp.core.cython_server");
+    PyErr_SetString(PyExc_ImportError, "init easy_tcp.cython_server");
   }
   __pyx_L0:;
   __Pyx_RefNannyFinishContext();

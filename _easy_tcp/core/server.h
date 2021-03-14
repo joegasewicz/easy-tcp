@@ -1,0 +1,1 @@
+int easy_tcp_server(int port);

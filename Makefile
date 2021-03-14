@@ -5,7 +5,9 @@
 CFLAGS=-g -Wall
 TEST_PATH=$(ROOT_PATH)tests/
 CORE_PATH=$(ROOT_PATH)easy_tcp/core/
+CYTHON_PATH=$(ROOT_PATH)easy_tcp/
 DIST_DIR=dist
+VERSION=0.0.8rc11
 
 CORE_FILES=$(CORE_PATH)et_utils.c $(CORE_PATH)process.c
 SERVER_FILES=$(CORE_PATH)server.c
@@ -30,15 +32,16 @@ run:
 ## -----------------------------------------------------------------
 req:
 	sudo apt-get install python3-dev
-	sudo apt-get install python-dev
+	sudo apt-get install patchelf
+	sudo aot-get install auditwheel
 
 cython-build:
 	gcc $(CFLAGS) -c $(CORE_PATH)process.c -o $(CORE_PATH)process.o
 	gcc $(CFLAGS) -c $(CORE_PATH)server.c -o $(CORE_PATH)server.o
-	gcc $(CORE_PATH)server.o -shared -o $(CORE_PATH)libserver.so
-	gcc $(CORE_PATH)process.o -shared -o $(CORE_PATH)libprocess.so
-	ar -rc $(CORE_PATH)libprocess.a $(CORE_PATH)process.o
-	ar -rc $(CORE_PATH)libserver.a $(CORE_PATH)server.o
+	gcc $(CORE_PATH)server.o -shared -o $(CYTHON_PATH)libserver.so
+	gcc $(CORE_PATH)process.o -shared -o $(CYTHON_PATH)libprocess.so
+	ar -rc $(CYTHON_PATH)libprocess.a $(CORE_PATH)process.o
+	ar -rc $(CYTHON_PATH)libserver.a $(CORE_PATH)server.o
 
 cython:
 	make cython-build
@@ -46,41 +49,49 @@ cython:
 
 install:
 	#python3 setup.py install
-	pip install $(DIST_DIR)/easy-tcp-0.0.8rc4.tar.gz
-
+	pip install --force-reinstall --no-cache-dir $(DIST_DIR)/easy-tcp-$(VERSION).tar.gz
+	# pip install --force-reinstall --no-cache-dir $(DIST_DIR)/easy_tcp-$(VERSION)-cp39-cp39-linux_x86_64.whl
 clean:
-	$(RM) -r $(CORE_PATH)*.o $(CORE_PATH)*.a $(CORE_PATH)*.so $(CORE_PATH)lib*.a
-	$(RM) -r easy_tcp/*.so 
-	$(RM) -r $(CORE_PATH)__pycache__
-	$(RM) -r $(CORE_PATH)__init__.py
-	$(RM) -r $(CORE_PATH)cython_server.c
-	$(RM) -r build
-	$(RM) -r $(DIST_DIR)
+	$(RM) -r $(CYTHON_PATH)*.o $(CYTHON_PATH)*.a $(CYTHON_PATH)*.so $(CYTHON_PATH)lib*.a
+	$(RM) -r $(CYTHON_PATH)*.so $(CYTHON_PATH)*.cpython-39-x86_64-linux-gnu.so
+	$(RM) -r $(CYTHON_PATH)__pycache__
+	$(RM) -r $(CYTHON_PATH)cython_server.c
+	$(RM) -r build dist wheelhouse
+	$(RM) -r $(DIST_DIR) easy_tcp.egg-info
 	$(RM) -r venv/lib/python3.9/site-packages/easy_tcp*.* venv/lib/python3.9/site-packages/easy_tcp*
 
 ## -----------------------------------------------------------------
 ## Python Tasks
 ## -----------------------------------------------------------------
 easy:
-	python3.9 easy_tcp/__init__.py
+	python3.9 _easy_tcp/__init__.py
 
 pkg:
 	python3.9 setup.py sdist
 
 release:
-	make pkg
-	twine upload $(DIST_DIR)/* --verbose
-	$(RM) $(CORE_PATH)__init__.py
+	# make pkg
+	# make repair
+	twine upload dist/* --verbose
 
 ## -----------------------------------------------------------------
 ## Local testing
 ## -----------------------------------------------------------------
 local:
+	mv _easy_tcp easy_tcp
 	make clean
 	make cython
-	touch $(CORE_PATH)__init__.py
 	make pkg
 	pip uninstall easy-tcp
+	make pkg
 	make install
+	# make repair
 	mv easy_tcp _easy_tcp
+	make check
+
+repair:
+	auditwheel repair $(DIST_DIR)/easy_tcp-$(VERSION)-cp39-cp39-linux_x86_64.whl
+	pip install --force-reinstall wheelhouse/easy_tcp-$(VERSION)-cp39-cp39-manylinux1_x86_64.whl
+
+check:
 	python test.py

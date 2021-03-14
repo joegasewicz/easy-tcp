@@ -1,4 +1,5 @@
-from easy_tcp import server
+import easy_tcp
+
 
 if __name__ == "__main__":
-    server()
+   easy_tcp.server()

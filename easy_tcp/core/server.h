@@ -1,1 +1,0 @@
-int ET_server(int port);

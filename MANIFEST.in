@@ -1,1 +1,5 @@
-include easy_tcp/core/process.h easy_tcp/core/server.h easy_tcp/core/cython_server.pxd
+include easy_tcp/cython_server.c
+include easy_tcp/__init__.py
+include easy_tcp/core/*.h
+include easy_tcp/*.a
+include easy_tcp/*.so
